@@ -1,0 +1,74 @@
+﻿@model List<Product>
+@{
+    SelectList categories = new SelectList(ViewBag.categories, "Id", "Name");
+}
+<link rel="stylesheet" href="~/css/ViewProduct.css" />
+<div class="category-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-8 col-md-10">
+                <div class="section-tittle mb-50">
+                    <h2>Shop with us</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--? Left content -->
+            <div class="col-xl-3 col-lg-3 col-md-4 ">
+                <!-- Job Category Listing start -->
+                <div class="category-listing mb-50">
+                    <!-- single one -->
+                    <div class="single-listing">
+                        <!-- Select City items start -->
+                        <div class="select-job-items2">
+                            <select asp-items="categories" id="mySelect" >
+                                <option value="-1" selected>Categories</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Job Category Listing End -->
+            </div>
+            <!--?  Right content -->
+            <div class="col-xl-9 col-lg-9 col-md-8 ">
+                <!--? New Arrival Start -->
+                <div class="new-arrival new-arrival2">
+                    <div class="row">
+                        @{foreach(Product product in Model){
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-new-arrival mb-50 text-center">
+                                <div class="popular-img">
+                                    <img src="~/Images/@product.ImagePath" alt="vv">
+                                </div>
+                                <div class="popular-caption">
+                                    <h3><a asp-action="ShowDetails" asp-controller="Customer" asp-route-Id=@product.Id>@product.Name</a></h3>
+                                    <div class="rating mb-10">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span>$ @product.Price</span>
+                                </div>
+                            </div>
+                        </div>
+                        }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const selectElement = document.getElementById('mySelect');
+    selectElement.value = "@ViewBag.selectedCategory";
+    selectElement.addEventListener('change', function () {
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        if (selectedOption.value != -1)
+            window.location.href = "/Customer/filter/" + selectedOption.value;
+        else
+            window.location.href = "/Customer/ViewProduct/";
+    });
+</script>

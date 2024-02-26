@@ -1,0 +1,12 @@
+﻿.section-tittle h2 {
+    font-size: 70px;
+    display: block;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 4px;
+    font-family: 'Courgette'
+}
+
+.section-tittle p {
+    font-size: 25px;
+}

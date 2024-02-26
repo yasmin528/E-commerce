@@ -1,0 +1,39 @@
+﻿@model Product
+<link  rel="stylesheet" href="~/css/ShowDetails.css"/>
+<div class="card mt-3">
+    <div class="photo">
+        <img src="~/Images/@Model.ImagePath" class="product-image">
+    </div>
+    <div class="description">
+        <input type="hidden" value="@Model.Id" class="productId"/>
+        <h1 class="product-name">@Model.Name</h1>
+        <h1 class="product-price">$@Model.Price</h1>
+        <p class="product-description">@Model.Description</p>
+        
+            <div class="form-type-number">
+            <div class="btn-minus">-</div>
+            <input type="number" id="quantity" name="quantity" class="form-control1" min="1" max="@(Model.Quantity - 1)" step="1" value="0">
+            <div class="btn-plus">+</div>
+            </div>
+            
+            @if (Context.Session.GetString("User") != null)
+            {
+                <button class="mt-2 add-to-cart-button d-flex user" onclick="Add()">Add to Cart</button>
+            }
+            else
+            {
+                <button class="mt-2 add-to-cart-button d-flex" onclick="Add()">Add to Cart</button>
+            }
+        <div class="back-to-shop"><a asp-action="ViewProduct" asp-controller="Customer" class="a1">&leftarrow;</a><span class="text-muted" style="font-size:medium">Back to shop</span></div>
+
+       
+    </div>
+</div>
+
+<div id="custom-dialog" class="custom-dialog">
+    <div class="custom-dialog-content">
+        <p>Sign in to add to cart</p>
+        <button id="custom-confirm" class="custom-dialog-button">Sign In</button>
+        <button id="custom-cancel" class="custom-dialog-button">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿/* Style for the Get in Touch section */
+.contact-title {
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-left: -22px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+textarea.form-control {
+    height: 150px;
+    resize: vertical; /* Allow vertical resizing of textarea */
+}
+
+/* Style for the contact information */
+.contact-info__icon {
+    font-size: 30px;
+    margin-right: 20px;
+    color: #007bff; /* Change the color as needed */
+}
+.contact-info {
+    margin-left: 90px;
+}
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: 24px;
+    }
+
+    .col-lg-8 {
+        margin-top: 20px;
+    }
+}

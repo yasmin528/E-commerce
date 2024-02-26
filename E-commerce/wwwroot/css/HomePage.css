@@ -1,0 +1,56 @@
+﻿
+/* Style the new arrival items */
+.single-new-arrival {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+.section-tittle h2 {
+    font-size: 70px;
+    display: block;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 4px;
+    font-family: 'Courgette'
+}
+
+    .single-new-arrival:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+.popular-img img {
+    width: 100%; /* Set the desired fixed width */
+    height: 250px; /* Set the desired fixed height */
+    margin-bottom: 10px;
+}
+
+.popular-caption a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333; /* Change the color as needed */
+    font-family: 'Courgette';
+    text-decoration: underline
+}
+    .rating {
+        color: #ffc107; /* Star color */
+        font-size: 18px;
+    }
+
+span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333; /* Change the color as needed */
+}
+
+
+.categories-area {
+    background-color: rgb(248,249,250);
+    padding: 3%;
+    margin: 3% auto;
+}

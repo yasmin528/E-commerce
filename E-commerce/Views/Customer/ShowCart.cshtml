@@ -1,0 +1,56 @@
+﻿@model List<CartModelView>
+<link rel="stylesheet" href="~/css/Cart.css"/>
+<div class="card mt-3 mb-2">
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="title">
+                <div class="row">
+                    <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                    <div class="col align-self-center text-right text-muted" style="margin-right: -69%;"><span class="theCount">@ViewBag.count</span>  items</div>
+                </div>
+            </div>
+            @foreach(var item in Model)
+            {
+            <div class="row border-top border-bottom cartItem">
+                <div class="row main1 align-items-center">
+                        <div class="col-2"><img class="img-fluid img1" src="~/Images/@item.Product.ImagePath"></div>
+                    <div class="col">
+                        <div class="row text-muted">@item.Product.Name</div>
+                        <div class="row">@item.Product.Description</div>
+                    </div>
+                        <div class="col">
+                            <a href="#" class="a1 minus">-</a>
+                            <input type="hidden" class="Pvalue" value="@item.Product.Quantity">
+                            <input type="hidden" class="P-price" value="@item.Product.Price">
+                            <input type="hidden" class="p-id" value="@item.Product.Id">
+                            <span class="border a1 quantity">@item.quantity</span>
+                            <a href="#" class="a1 plus">+</a>
+                        </div>
+                        <div class="col">$ <span class="Tprice">@item.totalPrice</span> <span class="close">&#10005;</span></div>
+                </div>
+            </div>
+            }
+            <div class="back-to-shop"><a asp-action="ViewProduct" asp-controller="Customer" class="a1">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+        </div>
+        <div class="col-md-4 summary">
+            <form asp-action="CheckOut" asp-controller="Customer">
+                <div><h5><b>Summary</b></h5></div>
+                <hr>
+                <div class="row" style="padding: 2vh 0;">
+                    <div class="col">TOTAL QUANTITY</div>
+                    <div class="col text-right totalAm" name="TotalAmount">@Model.Sum(x => x.quantity)</div>
+                </div>
+           
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">TOTAL PRICE</div>
+                    <div class="col text-right">$ <span class="totalPr">@Model.Sum(x => x.totalPrice)</span></div>
+                    <input type="hidden" name="TotalAmount" value="@Model.Sum(x => x.totalPrice)" />
+                    <input type="hidden" name="UserId" value="@Context.Session.GetString("UserId")" />
+                </div>
+                <button class="btn1">CHECKOUT</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+<script src="~/js/ShowCart.js"></script>

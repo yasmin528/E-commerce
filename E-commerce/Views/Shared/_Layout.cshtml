@@ -1,0 +1,237 @@
+﻿@{string path = "avatar.png";}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] SHION HOUSE</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/Shion House-logos_transparent.png">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/E_commerce.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                        <img src="~/Images/Shion House-logos_transparent.png"
+                             style="width: 190px;"
+                             height="70"
+                             width="25"
+                             alt="E-commerce Logo"
+                             loading="lazy" />
+                    </a>
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 ms-auto mb-lg-0">
+                        @if (Context.Session.GetString("User") != null && Context.Session.GetString("AorC") == "A")
+                        {
+                            <li class="nav-item navlink">
+                                <a class="nav-link linkitem" asp-action="ViewProductsTable" asp-controller="Admin">Products</a>
+                            </li>
+                            <li class="nav-item navlink">
+                                <a class="nav-link linkitem" asp-action="ViewOrderTable" asp-controller="Admin">Orders</a>
+                            </li>
+                            <li class="nav-item navlink">
+                                <a class="nav-link linkitem" asp-action="ViewCategoriesTable" asp-controller="Admin">Categories</a>
+                            </li>
+                            <li class="nav-item navlink">
+                                <a class="nav-link linkitem" asp-action="ViewUsersTable" asp-controller="Admin">Users</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item navlink">
+                                <a class="nav-link linkitem" asp-action="HomePage" asp-controller="User">Home</a>
+                            </li>
+                            <li class="nav-item navlink">
+                                <a class="nav-link linkitem" asp-action="ViewProduct" asp-controller="Customer">Shop</a>
+                            </li>
+                            <li class="nav-item navlink">
+                                <a class="nav-link linkitem" asp-action="About" asp-controller="User">About</a>
+                            </li>
+                            <li class="nav-item navlink">
+                                <a class="nav-link linkitem" asp-action="Contact" asp-controller="User">Contact</a>
+                            </li>
+                        }
+                        
+                    </ul>
+                    <!-- Left links -->
+
+                </div>
+                <!-- Collapsible wrapper -->
+                @if (Context.Session.GetString("User") != null && Context.Session.GetString("AorC") == "A")
+                {}else
+                {
+                    <form class="form-inline my-2 my-lg-0 d-flex search" asp-action="Search" asp-controller="User"method="get">
+                        <input class="form-control mr-sm-3 searchIN" type="search" placeholder="Search" aria-label="Search" name="querySearch">
+                        <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                        <button class="btn my-2 my-sm-0 Sbtn" type="submit">Search</button>
+                    </form>
+                }
+                <!-- Right elements -->
+                <div class="d-flex align-items-center">
+                    @if (Context.Session.GetString("User") != null && Context.Session.GetString("AorC") == "C")
+                    {
+                        <!-- Icon -->
+                        <a class="link-secondary me-3" asp-action="showCart" asp-controller="Customer">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    }
+                    <div class="dropdown">
+                        @{
+                            if (Context.Session.GetString("User") != null) { path = @Context.Session.GetString("Image"); }
+                        }
+                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                           href="#"
+                           id="navbarDropdownMenuAvatar"
+                           role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            <img 
+                            src ="~/Images/@path"
+                            class="rounded-circle"
+                                 height="25"
+                                 alt="Black and White Portrait of a Man"
+                                 loading="lazy" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="navbarDropdownMenuAvatar">
+                            @if (Context.Session.GetString("User") != null)
+                            {
+                                @if (Context.Session.GetString("AorC") == "C")
+                                {
+                                    <li>
+                                        <a class="dropdown-item" asp-action="EditProfile" asp-controller="Customer">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-action="LogOut" asp-controller="User">Logout</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a class="dropdown-item" asp-action="LogOut" asp-controller="User">Logout</a>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <li>
+                                    <a class="dropdown-item" asp-action="Login" asp-controller="User">Login</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <!-- Right elements -->
+
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer id="footer" class="footer-1 mb-0">
+        <div class="main-footer widgets-light typo-dark">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="widget subscribe no-box">
+                            <h5 class="widget-title">SHION HOUSE<span></span></h5>
+                            <p>
+                                Welcome to Shion House, your premier destination for the latest in fashion and style. Discover a world of trendy apparel, accessories, and more that cater to your unique tastes. With Shion House, you'll always stay ahead in the world of fashion, where quality and elegance meet affordability. Explore our curated collection today and redefine your fashion statement."
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="widget no-box">
+                            <h5 class="widget-title">Quick Links<span></span></h5>
+                            <ul class="thumbnail-widget ">
+                                <li>
+                                    <div class="thumb-content"><a href="#.">&nbsp;Home</a></div>
+                                </li>
+                                <li>
+                                    <div class="thumb-content"><a href="#.">&nbsp;Shop</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="widget no-box">
+                            <h5 class="widget-title">Follow up<span></span></h5>
+                            <a href="#"> <i class="fab fa-facebook"> </i> </a>
+                            <a href="#"> <i class="fab fa-twitter"> </i> </a>
+                            <a href="#"> <i class="fab fa-instagram"> </i> </a>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="widget no-box">
+                            <h5 class="widget-title">Contact Us<span></span></h5>
+                            <p>For assistance or inquiries, reach out to Shion House. Contact us via phone, email, or our online form. We're here to help!</p>
+                            <div class="emailfield">
+                                <form>
+                                <input type="text" name="email" value="Email">
+                                <input name="uri" type="hidden" value="arabiantheme">
+                                <input name="loc" type="hidden" value="en_US">
+                                <input class="submitbutton ripplelink" type="submit" value="Subscribe">
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+         </div>
+        <div class="footer-copyright widgets-light typo-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>Copyright © 2019. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+    <script src="~/js/ShowDetails.js"></script>
+    <script src="~/js/ShowCart.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

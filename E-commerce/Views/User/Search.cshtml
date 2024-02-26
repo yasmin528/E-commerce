@@ -1,0 +1,43 @@
+﻿@model List<Product>
+<link rel="stylesheet" href="~/css/ViewProduct.css" />
+@if(Model != null)
+{
+    <div class="category-area">
+        <div class="container">
+                <!--?  Right content -->
+                <div class="col-xl-9 col-lg-9 col-md-8 ">
+                    <!--? New Arrival Start -->
+                    <div class="new-arrival new-arrival2">
+                        <div class="row">
+                            @{foreach(Product product in Model){
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                <div class="single-new-arrival mb-50 text-center">
+                                    <div class="popular-img">
+                                        <img src="~/Images/@product.ImagePath" alt="vv">
+                                    </div>
+                                    <div class="popular-caption">
+                                        <h3><a asp-action="ShowDetails" asp-controller="Customer" asp-route-Id=@product.Id>@product.Name</a></h3>
+                                        <div class="rating mb-10">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span>$ @product.Price</span>
+                                    </div>
+                                </div>
+                            </div>
+                            }}
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="mt-3 mb-5" style="height:140px">
+        <h1>Not Found</h1>
+    </div>
+}

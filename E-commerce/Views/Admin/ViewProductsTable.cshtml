@@ -1,0 +1,42 @@
+﻿@model List<Product>
+<a class="btn Sbtn mt-3 mb-2" asp-action="NewProduct" asp-controller="Admin">New</a>
+<table class="table table-striped mb-2" style="padding-left:20px;">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col" class="text-center">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col" class="col-2">Category Name</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model)
+        {
+            <tr>
+                <td scope="row" style="padding-left:20px">@product.Id</td>
+                <td><img src="~/Images/@product.ImagePath" width="200px" height="200px" /></td>
+                <td >@product.Name</td>
+                <td>@product.Description</td>
+                <td style="color:green">$@product.Price</td>
+                <td style="padding-left:20px">@product.Quantity</td>
+                <td style="padding-left:20px">@ViewBag.CategoryDictionary[product.CategoryId]</td>
+                <td><a class="btn Sbtn" asp-action="EditProduct" asp-controller="Admin" asp-route-id=@product.Id>Edit</a></td>
+                <th><a class="btn btn-danger" style="background-color:#dc3545"onclick="Delete(@product.Id)">Delete</a></th>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function Delete(id) {
+        var confirmMessage = "Are you sure you want to delete this Product?";
+        if (window.confirm(confirmMessage)) {
+            window.location.href = "DeleteProduct/" + id;
+        }
+    }
+</script>

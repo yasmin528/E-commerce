@@ -1,0 +1,190 @@
+﻿/* ShowDetails.css */
+
+/* Style the card container */
+.card {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    flex-direction: row;
+    
+}
+
+/* Style the product photo */
+.photo img {
+    height: 405px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 405px;
+}
+
+/* Style the product description */
+.description {
+    padding: 20px;
+    font-size: 25px
+}
+
+    /* Style the product name */
+    .description h2 {
+        font-size: 24px;
+        margin: 0;
+        font-family: 'Courgette';
+    }
+
+    /* Style the product price */
+    .description h1 {
+        font-size: 28px;
+        margin: 10px 0;
+    }
+
+    /* Style the product description text */
+    .description p {
+        font-size: 20px;
+    }
+.product-price{
+    color:green;
+}
+/* Style the quantity input */
+.form-control1 {
+    width: 60px;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* Style the "Add to Cart" button */
+.add-to-cart-button {
+    background-color: #102d62;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    /* Hover effect for the button */
+    button:hover {
+        background-color: #0056b3;
+    }
+
+
+/* ShowDetails.css */
+
+/* Style the quantity input and its associated elements */
+.form-type-number {
+    display: flex;
+    align-items: center;
+    flex-direction:row;
+}
+
+#quantity {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-align: center; /* Center text */
+    font-size: 16px;
+    margin-right: 10px;
+    position: relative; /* Position for pseudo-elements */
+    
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+    /* Style the pseudo-elements for plus and minus signs */
+    #quantity::before,
+    #quantity::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 2px;
+        background-color: #007bff;
+    }
+
+    #quantity::before {
+        left: -25px; /* Position for the minus sign */
+    }
+
+    #quantity::after {
+        right: -25px; /* Position for the plus sign */
+    }
+
+/* Style the "+" and "-" button containers */
+.btn-minus,
+.btn-plus {
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Position the buttons relative to the input */
+.btn-minus {
+    margin-right: 10px;
+}
+
+.btn-plus {
+    margin-left: -6px;
+}
+
+/* Ensure the input and buttons align vertically */
+#quantity,
+.btn-minus,
+.btn-plus {
+    vertical-align: middle;
+}
+
+/* Style for the custom dialog */
+.custom-dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.custom-dialog-content {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.custom-dialog-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+    .custom-dialog-button:hover {
+        background-color: #0056b3;
+    }
+
+.a1 {
+    text-decoration: none !important;
+    padding: 0 1vh;
+}
+.a1:hover {
+        text-decoration: none !important;
+    }

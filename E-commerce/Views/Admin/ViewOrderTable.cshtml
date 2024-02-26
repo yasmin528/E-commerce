@@ -1,0 +1,55 @@
+﻿@model List<Order>
+<table class="table table-striped mt-3 mb-2" style="padding-left:20px;width:max-content">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Order Item Name</th>
+            <th scope="col">Order Item Quantity</th>
+            <th scope="col">Order Item Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td scope="row">@order.Id</td>
+                <td>@ViewBag.userDictionary[order.UserId]</td>
+                <td>
+                    @order.OrderDate.ToString("yyyy-MM-dd")<br>
+                    @order.OrderDate.ToString("HH:mm:ss")
+                </td>
+                @{
+                    var orderItems = ((IEnumerable<OrderItem>)ViewBag.orderItems).Where(x => x.OrderId == order.Id).ToList();
+                }
+                <td>
+                    @foreach (var item in orderItems)
+                    {
+                         <span>* </span>@item.ProductName <span> @item.ProductQuantity  $@item.ProductPrice</span><br />
+                    }
+                </td>
+                <td>
+                    @foreach (var item in orderItems)
+                    {
+                        <span>* </span>
+
+                        @item.ProductQuantity
+
+                        <br />
+                    }
+                </td>
+                <td>
+                    @foreach (var item in orderItems)
+                    {
+                        <span>* $ </span>
+
+                         @item.ProductPrice
+
+                        <br />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

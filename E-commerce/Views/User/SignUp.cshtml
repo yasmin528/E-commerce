@@ -1,0 +1,85 @@
+﻿@model User
+
+<link rel="stylesheet" href="~/css/SignUp.css" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card my-5">
+
+                <form class="card-body cardbody-color p-lg-5" asp-action="SignUp" method="post" asp-controller="User">
+
+                    <div class="text-center">
+                        <img src="~/Images/avatar.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                             width="200px" alt="profile">
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="FirstName">First Name</label>
+                        <input asp-for="FirstName" class="form-control" placeholder="Enter First Name">
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="LastName">Last Name</label>
+                        <input asp-for="LastName" class="form-control" placeholder="Enter Last Name">
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Username">Username</label>
+                        <input asp-for="Username" class="form-control" placeholder="Enter Username">
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Email">Email address</label>
+                        <input asp-for="Email" class="form-control" placeholder="Enter email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Password">Password</label>
+                        <input asp-for="Password" class="form-control" placeholder="Password" type="password">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Age">Age</label>
+                        <input asp-for="Age" class="form-control" placeholder="Age">
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Phone">Phone</label>
+                        <input asp-for="Phone" class="form-control" placeholder="Enter Phone">
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Address">Address</label>
+                        <input asp-for="Address" class="form-control" placeholder="Enter Address">
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                   </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="Gender" checked value="M">
+                            <label class="form-check-label" asp-for="Gender">
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="Gender" value="F">
+                            <label class="form-check-label" asp-for="Gender">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                    <div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Sign UP</button></div>
+                    <div id="emailHelp" class="form-text text-center mb-5 text-dark">
+                        Already has an
+                        Account? <a asp-action="Login" asp-controller="User" class="text-dark fw-bold">
+                            Login
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

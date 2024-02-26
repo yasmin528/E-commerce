@@ -1,0 +1,11 @@
+﻿input[type=text]{
+    color:black !important;
+}
+.shadow {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-left: 41px;
+}

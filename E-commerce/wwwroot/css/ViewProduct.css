@@ -1,0 +1,72 @@
+﻿/* Style the category-area */
+.category-area {
+    
+    padding: 50px 0;
+}
+
+/* Style the section-tittle */
+.section-tittle h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333; /* Change the color as needed */
+}
+
+.section-tittle p {
+    font-size: 18px;
+    color: #666; /* Change the color as needed */
+}
+
+/* Style the select job items */
+.select-job-items2 select {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    color: #333; /* Change the color as needed */
+}
+
+/* Style the new arrival items */
+.single-new-arrival {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+    .single-new-arrival:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+.popular-img img {
+    width: 100%; /* Set the desired fixed width */
+    height: 250px; /* Set the desired fixed height */
+    margin-bottom: 10px;
+}
+
+.popular-caption a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333; /* Change the color as needed */
+    font-family: 'Courgette';
+    text-decoration:underline
+}
+
+
+.rating {
+    color: #ffc107; /* Star color */
+    font-size: 18px;
+}
+
+span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333; /* Change the color as needed */
+}
